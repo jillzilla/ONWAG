@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dl8f7fjviejxu"]
+
+[ext_resource type="FontFile" uid="uid://bfjliqx50d7g2" path="res://assets/fonts/SignPainterHouseScript.ttf" id="1_4f5tl"]
+[ext_resource type="Script" uid="uid://b3asiahmnfhih" path="res://assets/scripts/night_screen.gd" id="1_xrr74"]
+[ext_resource type="AudioStream" uid="uid://qipjtr3w5iu4" path="res://assets/sounds/honk-sound.mp3" id="2_ntt0c"]
+
+[node name="NightScreen" type="Node" unique_id=1794653787]
+script = ExtResource("1_xrr74")
+
+[node name="Honk" type="AudioStreamPlayer" parent="." unique_id=1142808637]
+stream = ExtResource("2_ntt0c")
+autoplay = true
+
+[node name="Background" type="ColorRect" parent="." unique_id=681524742]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23529412, 0.41960785, 0.83137256, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1987466789]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.5
+offset_top = -59.0
+offset_right = 359.5
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_4f5tl")
+theme_override_font_sizes/font_size = 128
+text = "Survive Until 6AM"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="TimerNextScene" type="Timer" parent="." unique_id=928437624]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TimerNextScene" to="." method="_on_timer_next_scene_timeout"]
