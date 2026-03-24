@@ -3,7 +3,12 @@
 [ext_resource type="AudioStream" uid="uid://cjnowijf7msbk" path="res://assets/music/Préludes Book 1, L. 117 - Minstrels (Rake in The Lake).mp3" id="1_1pg7n"]
 [ext_resource type="Texture2D" uid="uid://cyadvusdxme4q" path="res://assets/images/office.png" id="1_n5x6c"]
 [ext_resource type="Texture2D" uid="uid://cbptkpln5alg5" path="res://assets/images/monitor_button.png" id="2_un4qs"]
+[ext_resource type="SpriteFrames" uid="uid://c7g7omeptbde0" path="res://assets/sprite_frames/monitor_sprite_frames.tres" id="3_17b01"]
+[ext_resource type="Texture2D" uid="uid://dptwybxhqt6ji" path="res://assets/images/cam1.png" id="3_fw4li"]
 [ext_resource type="FontFile" uid="uid://bxug85dll2rqu" path="res://assets/fonts/double_pixel-7.ttf" id="3_mrbpc"]
+[ext_resource type="Texture2D" uid="uid://6dgx3bnngsb0" path="res://assets/images/cam2or3.png" id="4_kqp6g"]
+[ext_resource type="Texture2D" uid="uid://i8b6wsk0kx10" path="res://assets/images/b_box.png" id="5_kqp6g"]
+[ext_resource type="Texture2D" uid="uid://c4ykjrqndageb" path="res://assets/images/c-knife.png" id="6_f1ux5"]
 
 [node name="Gameplay" type="Node" unique_id=1891329687]
 
@@ -17,6 +22,39 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=987310522]
+
+[node name="CameraScreen" type="Node2D" parent="HUD" unique_id=499676405]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="CameraA" type="Sprite2D" parent="HUD/CameraScreen" unique_id=212611089]
+position = Vector2(640, -360)
+texture = ExtResource("3_fw4li")
+metadata/_edit_lock_ = true
+
+[node name="CameraB" type="Sprite2D" parent="HUD/CameraScreen" unique_id=697281570]
+position = Vector2(-640, 360)
+texture = ExtResource("4_kqp6g")
+metadata/_edit_lock_ = true
+
+[node name="Box" type="Sprite2D" parent="HUD/CameraScreen/CameraB" unique_id=607848556]
+texture = ExtResource("5_kqp6g")
+metadata/_edit_lock_ = true
+
+[node name="CameraC" type="Sprite2D" parent="HUD/CameraScreen" unique_id=901861017]
+position = Vector2(1920, 360)
+texture = ExtResource("4_kqp6g")
+metadata/_edit_lock_ = true
+
+[node name="Knife" type="Sprite2D" parent="HUD/CameraScreen/CameraC" unique_id=2120968957]
+texture = ExtResource("6_f1ux5")
+metadata/_edit_lock_ = true
+
+[node name="Monitor" type="AnimatedSprite2D" parent="HUD" unique_id=1322045113]
+visible = false
+position = Vector2(640, 360)
+sprite_frames = ExtResource("3_17b01")
+metadata/_edit_lock_ = true
 
 [node name="MonitorButton" type="TextureButton" parent="HUD" unique_id=954904456]
 anchors_preset = -1
