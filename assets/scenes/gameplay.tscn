@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://i8b6wsk0kx10" path="res://assets/images/b_box.png" id="5_kqp6g"]
 [ext_resource type="Texture2D" uid="uid://c4ykjrqndageb" path="res://assets/images/c-knife.png" id="6_f1ux5"]
 [ext_resource type="SpriteFrames" uid="uid://827yyvhna151" path="res://assets/sprite_frames/static_sprite_frames.tres" id="7_hogfr"]
-[ext_resource type="Script" uid="uid://5vhl1yhf6xqe" path="res://assets/mechanics/MonitorMechanic.gd" id="10_qk4f4"]
+[ext_resource type="Script" uid="uid://5vhl1yhf6xqe" path="res://assets/classes/mechanics/MonitorMechanic.gd" id="10_qk4f4"]
 [ext_resource type="Texture2D" uid="uid://di1cvb2ochvic" path="res://assets/images/cursor.png" id="11_bl36o"]
-[ext_resource type="Script" uid="uid://cdc4p25eyade5" path="res://assets/mechanics/CameraButton.gd" id="15_ixvey"]
+[ext_resource type="Script" uid="uid://cdc4p25eyade5" path="res://assets/classes/mechanics/CameraButton.gd" id="15_ixvey"]
 
 [node name="Gameplay" type="Node" unique_id=1891329687]
 
@@ -186,25 +186,21 @@ script = ExtResource("10_qk4f4")
 button = NodePath("../HUD/MonitorButton")
 monitor = NodePath("../HUD/Monitor")
 screen = NodePath("../HUD/CameraScreen")
-metadata/_custom_type_script = "uid://5vhl1yhf6xqe"
 
 [node name="CameraButton" type="Node" parent="." unique_id=1253005084 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show")]
 script = ExtResource("15_ixvey")
 button = NodePath("../HUD/CameraScreen/CamAButton")
 camera_to_show = NodePath("../HUD/CameraScreen/CameraA")
 cursor_to_show = NodePath("../HUD/CameraScreen/CursorA")
-metadata/_custom_type_script = "uid://cdc4p25eyade5"
 
 [node name="CameraButton2" type="Node" parent="." unique_id=1281704117 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show")]
 script = ExtResource("15_ixvey")
 button = NodePath("../HUD/CameraScreen/CamBButton")
 camera_to_show = NodePath("../HUD/CameraScreen/CameraB")
 cursor_to_show = NodePath("../HUD/CameraScreen/CursorB")
-metadata/_custom_type_script = "uid://cdc4p25eyade5"
 
 [node name="CameraButton3" type="Node" parent="." unique_id=870609894 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show")]
 script = ExtResource("15_ixvey")
 button = NodePath("../HUD/CameraScreen/CamCButton")
 camera_to_show = NodePath("../HUD/CameraScreen/CameraC")
 cursor_to_show = NodePath("../HUD/CameraScreen/CursorC")
-metadata/_custom_type_script = "uid://cdc4p25eyade5"
