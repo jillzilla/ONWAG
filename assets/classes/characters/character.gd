@@ -14,12 +14,17 @@ enum location {camera_a,camera_b,camera_c,office};
 @export var timer_counter : Timer;
 
 @export var can_kill_player : bool = true;
+@export var can_player_counter : bool = true;
 
 #functions
 func _ready() -> void:
 	timer_movement.connect("timeout",_timer_movement_timeout);
-	timer_kill_player.connect("timeout",_timer_kill_player_timeout);
-	timer_counter.connect("timeout",_timer_counter_timeout);
+	
+	if can_kill_player:
+		timer_kill_player.connect("timeout",_timer_kill_player_timeout);
+		
+	if can_player_counter:
+		timer_counter.connect("timeout",_timer_counter_timeout);
 	
 	if ai_level != 0 && current_location != location.office:
 		timer_movement.start();

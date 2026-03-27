@@ -11,9 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://drajmcace2qcm" path="res://assets/images/gooseA2.png" id="5_bl36o"]
 [ext_resource type="Texture2D" uid="uid://i8b6wsk0kx10" path="res://assets/images/b_box.png" id="5_kqp6g"]
 [ext_resource type="Texture2D" uid="uid://c4ykjrqndageb" path="res://assets/images/c-knife.png" id="6_f1ux5"]
+[ext_resource type="Texture2D" uid="uid://b6pky7psf0abc" path="res://assets/images/gooseb.png" id="7_b4idp"]
 [ext_resource type="SpriteFrames" uid="uid://827yyvhna151" path="res://assets/sprite_frames/static_sprite_frames.tres" id="7_hogfr"]
+[ext_resource type="Texture2D" uid="uid://rrr2fc0srwje" path="res://assets/images/goosec.png" id="9_iuexx"]
 [ext_resource type="Script" uid="uid://5vhl1yhf6xqe" path="res://assets/classes/mechanics/MonitorMechanic.gd" id="10_qk4f4"]
 [ext_resource type="Texture2D" uid="uid://di1cvb2ochvic" path="res://assets/images/cursor.png" id="11_bl36o"]
+[ext_resource type="Script" uid="uid://jvpnih3sf8he" path="res://assets/classes/characters/goose.gd" id="14_br2i6"]
 [ext_resource type="Script" uid="uid://cdc4p25eyade5" path="res://assets/classes/mechanics/CameraButton.gd" id="15_ixvey"]
 
 [node name="Gameplay" type="Node" unique_id=1891329687]
@@ -55,6 +58,11 @@ texture = ExtResource("4_kqp6g")
 centered = false
 metadata/_edit_lock_ = true
 
+[node name="Goose" type="Sprite2D" parent="HUD/CameraScreen/CameraB" unique_id=1679255197]
+visible = false
+texture = ExtResource("7_b4idp")
+centered = false
+
 [node name="Box" type="Sprite2D" parent="HUD/CameraScreen/CameraB" unique_id=607848556]
 texture = ExtResource("5_kqp6g")
 centered = false
@@ -63,6 +71,12 @@ metadata/_edit_lock_ = true
 [node name="CameraC" type="Sprite2D" parent="HUD/CameraScreen" unique_id=901861017 groups=["camera"]]
 visible = false
 texture = ExtResource("4_kqp6g")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Goose" type="Sprite2D" parent="HUD/CameraScreen/CameraC" unique_id=1179747771]
+visible = false
+texture = ExtResource("9_iuexx")
 centered = false
 metadata/_edit_lock_ = true
 
@@ -180,6 +194,24 @@ theme_override_fonts/font = ExtResource("3_mrbpc")
 theme_override_font_sizes/font_size = 64
 text = "12 AM"
 metadata/_edit_lock_ = true
+
+[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("graphics", "knife", "timer_movement", "timer_kill_player")]
+script = ExtResource("14_br2i6")
+graphics = [NodePath("../HUD/CameraScreen/CameraA/Goose1"), NodePath("../HUD/CameraScreen/CameraA/Goose2"), NodePath("../HUD/CameraScreen/CameraB/Goose"), NodePath("../HUD/CameraScreen/CameraC/Goose")]
+knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
+ai_level = 20
+timer_movement = NodePath("Timer_Movement")
+timer_kill_player = NodePath("Timer_Kill_Player")
+can_player_counter = false
+metadata/_custom_type_script = "uid://jvpnih3sf8he"
+
+[node name="Timer_Movement" type="Timer" parent="Goose" unique_id=710525424]
+wait_time = 5.0
+one_shot = true
+
+[node name="Timer_Kill_Player" type="Timer" parent="Goose" unique_id=803407839]
+wait_time = 10.0
+one_shot = true
 
 [node name="MonitorMechanic" type="Node" parent="." unique_id=1541293040 node_paths=PackedStringArray("button", "monitor", "screen")]
 script = ExtResource("10_qk4f4")
