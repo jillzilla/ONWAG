@@ -2,7 +2,7 @@ extends Character
 class_name Goose
 
 #variables
-@export var graphics : Array[Sprite2D];
+@export var graphics : Dictionary[String,Sprite2D] = {};
 @export var knife : Sprite2D;
 
 var camera_a_alt : bool = false;
@@ -23,18 +23,18 @@ func _move() -> void:
 
 func _handle_graphics() -> void:
 	for i in graphics.size():
-		graphics[i].visible = false;
+		graphics[graphics.keys()[i]].visible = false;
 	
 	knife.visible = true;
 	
 	match(current_location):
 		location.camera_a:
 			if !camera_a_alt:
-				graphics[0].visible = true;
+				graphics["camera_a"].visible = true;
 			else:
-				graphics[1].visible = true;
+				graphics["camera_a_alt"].visible = true;
 		location.camera_b:
-			graphics[2].visible = true;
+			graphics["camera_b"].visible = true;
 		location.camera_c:
-			graphics[3].visible = true;
+			graphics["camera_c"].visible = true;
 			knife.visible = false;

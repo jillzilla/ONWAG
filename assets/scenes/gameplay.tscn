@@ -197,7 +197,12 @@ metadata/_edit_lock_ = true
 
 [node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("graphics", "knife", "timer_movement", "timer_kill_player")]
 script = ExtResource("14_br2i6")
-graphics = [NodePath("../HUD/CameraScreen/CameraA/Goose1"), NodePath("../HUD/CameraScreen/CameraA/Goose2"), NodePath("../HUD/CameraScreen/CameraB/Goose"), NodePath("../HUD/CameraScreen/CameraC/Goose")]
+graphics = {
+"camera_a": NodePath("../HUD/CameraScreen/CameraA/Goose1"),
+"camera_a_alt": NodePath("../HUD/CameraScreen/CameraA/Goose2"),
+"camera_b": NodePath("../HUD/CameraScreen/CameraB/Goose"),
+"camera_c": NodePath("../HUD/CameraScreen/CameraC/Goose")
+}
 knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
 ai_level = 20
 timer_movement = NodePath("Timer_Movement")
