@@ -3,7 +3,11 @@ class_name Goose
 
 #variables
 @export var graphics : Dictionary[String,Sprite2D] = {};
+@export var cameras_for_graphics : Dictionary[String, Sprite2D] = {};
 @export var knife : Sprite2D;
+@export var static_fade_effect : StaticFadeEffect;
+@export var camera_change_sound : AudioStreamPlayer;
+@export var monitor_mechanic : MonitorMechanic;
 
 var camera_a_alt : bool = false;
 
@@ -22,6 +26,15 @@ func _move() -> void:
 			current_location = [location.camera_a,location.camera_b].pick_random();
 
 func _handle_graphics() -> void:
+	if monitor_mechanic.isMonitorFullyOpened:
+		for i in cameras_for_graphics.size():
+			if cameras_for_graphics[cameras_for_graphics.keys()[i]].visible && graphics[graphics.keys()[i]].visible:
+				if static_fade_effect.is_emitting:
+					static_fade_effect.stop_effect.emit();
+				static_fade_effect._trigger_fade_effect(1,0.2,0.5);
+				camera_change_sound.play();
+				break;
+	
 	for i in graphics.size():
 		graphics[graphics.keys()[i]].visible = false;
 	

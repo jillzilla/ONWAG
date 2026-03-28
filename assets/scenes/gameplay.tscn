@@ -18,12 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://di1cvb2ochvic" path="res://assets/images/cursor.png" id="11_bl36o"]
 [ext_resource type="Script" uid="uid://jvpnih3sf8he" path="res://assets/classes/characters/goose.gd" id="14_br2i6"]
 [ext_resource type="Script" uid="uid://cdc4p25eyade5" path="res://assets/classes/mechanics/CameraButton.gd" id="15_ixvey"]
+[ext_resource type="AudioStream" uid="uid://cfninqkr5h1os" path="res://assets/sounds/STEREO_CASSETTE__90097704.ogg" id="19_qautv"]
+[ext_resource type="AudioStream" uid="uid://smjrckvq77r0" path="res://assets/sounds/STEREO_CASSETTE__90097701.ogg" id="20_avujn"]
+[ext_resource type="AudioStream" uid="uid://b6wtdd0wkadnx" path="res://assets/sounds/blip3.ogg" id="21_avujn"]
+[ext_resource type="Script" uid="uid://w7yh76w70j6d" path="res://assets/classes/mechanics/StaticFadeEffect.gd" id="22_bkfnj"]
 
 [node name="Gameplay" type="Node" unique_id=1891329687]
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=438281429]
-stream = ExtResource("1_1pg7n")
-autoplay = true
 
 [node name="Office" type="Sprite2D" parent="." unique_id=1737180643]
 texture = ExtResource("1_n5x6c")
@@ -195,7 +195,7 @@ theme_override_font_sizes/font_size = 64
 text = "12 AM"
 metadata/_edit_lock_ = true
 
-[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("graphics", "knife", "timer_movement", "timer_kill_player")]
+[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("graphics", "cameras_for_graphics", "knife", "static_fade_effect", "camera_change_sound", "monitor_mechanic", "timer_movement", "timer_kill_player")]
 script = ExtResource("14_br2i6")
 graphics = {
 "camera_a": NodePath("../HUD/CameraScreen/CameraA/Goose1"),
@@ -203,7 +203,16 @@ graphics = {
 "camera_b": NodePath("../HUD/CameraScreen/CameraB/Goose"),
 "camera_c": NodePath("../HUD/CameraScreen/CameraC/Goose")
 }
+cameras_for_graphics = {
+"camera_a": NodePath("../HUD/CameraScreen/CameraA"),
+"camera_a_alt": NodePath("../HUD/CameraScreen/CameraA"),
+"camera_b": NodePath("../HUD/CameraScreen/CameraB"),
+"camera_c": NodePath("../HUD/CameraScreen/CameraC")
+}
 knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
+static_fade_effect = NodePath("../StaticFadeEffect")
+camera_change_sound = NodePath("../Camera_Change_Sound")
+monitor_mechanic = NodePath("../MonitorMechanic")
 ai_level = 20
 timer_movement = NodePath("Timer_Movement")
 timer_kill_player = NodePath("Timer_Kill_Player")
@@ -218,26 +227,52 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[node name="MonitorMechanic" type="Node" parent="." unique_id=1541293040 node_paths=PackedStringArray("button", "monitor", "screen")]
+[node name="MonitorMechanic" type="Node" parent="." unique_id=1541293040 node_paths=PackedStringArray("button", "monitor", "screen", "monitor_on_sound", "monitor_off_sound")]
 script = ExtResource("10_qk4f4")
 button = NodePath("../HUD/MonitorButton")
 monitor = NodePath("../HUD/Monitor")
 screen = NodePath("../HUD/CameraScreen")
+monitor_on_sound = NodePath("../Monitor_ON")
+monitor_off_sound = NodePath("../Monitor_OFF")
 
-[node name="CameraButton" type="Node" parent="." unique_id=1253005084 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show")]
+[node name="CameraButton" type="Node" parent="." unique_id=1253005084 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
 script = ExtResource("15_ixvey")
 button = NodePath("../HUD/CameraScreen/CamAButton")
 camera_to_show = NodePath("../HUD/CameraScreen/CameraA")
 cursor_to_show = NodePath("../HUD/CameraScreen/CursorA")
+camera_change_sound = NodePath("../Camera_Change_Sound")
+static_fade_effect = NodePath("../StaticFadeEffect")
 
-[node name="CameraButton2" type="Node" parent="." unique_id=1281704117 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show")]
+[node name="CameraButton2" type="Node" parent="." unique_id=1281704117 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
 script = ExtResource("15_ixvey")
 button = NodePath("../HUD/CameraScreen/CamBButton")
 camera_to_show = NodePath("../HUD/CameraScreen/CameraB")
 cursor_to_show = NodePath("../HUD/CameraScreen/CursorB")
+camera_change_sound = NodePath("../Camera_Change_Sound")
+static_fade_effect = NodePath("../StaticFadeEffect")
 
-[node name="CameraButton3" type="Node" parent="." unique_id=870609894 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show")]
+[node name="CameraButton3" type="Node" parent="." unique_id=870609894 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
 script = ExtResource("15_ixvey")
 button = NodePath("../HUD/CameraScreen/CamCButton")
 camera_to_show = NodePath("../HUD/CameraScreen/CameraC")
 cursor_to_show = NodePath("../HUD/CameraScreen/CursorC")
+camera_change_sound = NodePath("../Camera_Change_Sound")
+static_fade_effect = NodePath("../StaticFadeEffect")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=438281429]
+stream = ExtResource("1_1pg7n")
+autoplay = true
+
+[node name="Monitor_ON" type="AudioStreamPlayer" parent="." unique_id=807402242]
+stream = ExtResource("19_qautv")
+
+[node name="Monitor_OFF" type="AudioStreamPlayer" parent="." unique_id=296527017]
+stream = ExtResource("20_avujn")
+
+[node name="Camera_Change_Sound" type="AudioStreamPlayer" parent="." unique_id=1515544684]
+stream = ExtResource("21_avujn")
+
+[node name="StaticFadeEffect" type="Node" parent="." unique_id=399881890 node_paths=PackedStringArray("static_")]
+script = ExtResource("22_bkfnj")
+static_ = NodePath("../HUD/CameraScreen/Static")
+metadata/_custom_type_script = "uid://w7yh76w70j6d"
