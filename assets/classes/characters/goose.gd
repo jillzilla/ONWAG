@@ -28,7 +28,7 @@ func _move() -> void:
 func _handle_graphics() -> void:
 	if monitor_mechanic.isMonitorFullyOpened:
 		for i in cameras_for_graphics.size():
-			if cameras_for_graphics[cameras_for_graphics.keys()[i]].visible && graphics[graphics.keys()[i]].visible:
+			if cameras_for_graphics[graphics.keys()[i]].visible:
 				if static_fade_effect.is_emitting:
 					static_fade_effect.stop_effect.emit();
 				static_fade_effect._trigger_fade_effect(1,0.2,0.5);
