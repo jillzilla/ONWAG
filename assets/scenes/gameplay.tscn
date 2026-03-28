@@ -195,8 +195,12 @@ theme_override_font_sizes/font_size = 64
 text = "12 AM"
 metadata/_edit_lock_ = true
 
-[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("graphics", "cameras_for_graphics", "knife", "static_fade_effect", "camera_change_sound", "monitor_mechanic", "timer_movement", "timer_kill_player")]
+[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("knife", "timer_movement", "timer_kill_player", "graphics", "cameras_for_graphics", "static_fade_effect", "camera_change_sound", "monitor_mechanic")]
 script = ExtResource("14_br2i6")
+knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
+ai_level = 20
+timer_movement = NodePath("Timer_Movement")
+timer_kill_player = NodePath("Timer_Kill_Player")
 graphics = {
 "camera_a": NodePath("../HUD/CameraScreen/CameraA/Goose1"),
 "camera_a_alt": NodePath("../HUD/CameraScreen/CameraA/Goose2"),
@@ -209,14 +213,10 @@ cameras_for_graphics = {
 "camera_b": NodePath("../HUD/CameraScreen/CameraB"),
 "camera_c": NodePath("../HUD/CameraScreen/CameraC")
 }
-knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
+can_player_counter = false
 static_fade_effect = NodePath("../StaticFadeEffect")
 camera_change_sound = NodePath("../Camera_Change_Sound")
 monitor_mechanic = NodePath("../MonitorMechanic")
-ai_level = 20
-timer_movement = NodePath("Timer_Movement")
-timer_kill_player = NodePath("Timer_Kill_Player")
-can_player_counter = false
 metadata/_custom_type_script = "uid://jvpnih3sf8he"
 
 [node name="Timer_Movement" type="Timer" parent="Goose" unique_id=710525424]

@@ -13,8 +13,15 @@ enum location {camera_a,camera_b,camera_c,office};
 @export var timer_kill_player : Timer;
 @export var timer_counter : Timer;
 
+@export var graphics : Dictionary[String,Sprite2D] = {};
+@export var cameras_for_graphics : Dictionary[String, Sprite2D] = {};
+
 @export var can_kill_player : bool = true;
 @export var can_player_counter : bool = true;
+
+@export var static_fade_effect : StaticFadeEffect;
+@export var camera_change_sound : AudioStreamPlayer;
+@export var monitor_mechanic : MonitorMechanic;
 
 #functions
 func _ready() -> void:
@@ -31,8 +38,10 @@ func _ready() -> void:
 	
 func _timer_movement_timeout() -> void:
 	if randi_range(1,20) <= ai_level:
+		_trigger_static_effect();
 		_move();
 		_handle_graphics();
+		_trigger_static_effect();
 		_handle_sounds();
 	
 	if current_location != location.office:
@@ -65,3 +74,16 @@ func _move() -> void:
 
 func _annoy_player() -> void:
 	pass;
+
+func _trigger_static_effect() -> void:
+	if monitor_mechanic.isMonitorFullyOpened:
+		for i in cameras_for_graphics.size():
+			if cameras_for_graphics[cameras_for_graphics.keys()[i]].visible && graphics[graphics.keys()[i]].visible:
+				if static_fade_effect.is_emitting:
+					static_fade_effect.stop_effect.emit();
+				static_fade_effect._trigger_fade_effect(1,0.2,0.5);
+				camera_change_sound.play();
+
+func _reset_graphics_visibility() -> void:
+	for i in graphics.size():
+		graphics[graphics.keys()[i]].visible = false;
