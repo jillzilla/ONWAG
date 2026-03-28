@@ -41,8 +41,8 @@ func _timer_movement_timeout() -> void:
 		_trigger_static_effect();
 		_move();
 		_handle_graphics();
-		_trigger_static_effect();
 		_handle_sounds();
+		_trigger_static_effect();
 	
 	if current_location != location.office:
 		timer_movement.start();
