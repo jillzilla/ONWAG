@@ -23,6 +23,12 @@ enum location {camera_a,camera_b,camera_c,office};
 @export var camera_change_sound : AudioStreamPlayer;
 @export var monitor_mechanic : MonitorMechanic;
 
+@export var jumpscare_texture : Node2D;
+@export var jumpscare_animation : AnimationPlayer;
+@export var jumpscare_sound : AudioStreamPlayer;
+
+@export var monitor_button : TextureButton;
+
 #functions
 func _ready() -> void:
 	timer_movement.connect("timeout",_timer_movement_timeout);
@@ -53,7 +59,14 @@ func _timer_movement_timeout() -> void:
 			_annoy_player();
 		
 func _timer_kill_player_timeout() -> void:
-	pass;
+	if monitor_mechanic.isOpen:
+		monitor_mechanic._pull_down_monitor();
+	monitor_button.queue_free();
+	jumpscare_sound.play();
+	jumpscare_texture.visible = true;
+	jumpscare_animation.play("default");
+	await jumpscare_animation.animation_finished;
+	get_tree().change_scene_to_file("res://assets/scenes/game_over.tscn");
 
 func _timer_counter_timeout() -> void:
 	current_location = position_reset;

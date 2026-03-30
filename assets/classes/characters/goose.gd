@@ -2,6 +2,8 @@ extends Character
 class_name Goose
 
 #variables
+@export var time_mechanic : TimeMechanic;
+
 @export var knife : Sprite2D;
 var camera_a_alt : bool = false;
 
@@ -12,12 +14,21 @@ func _move() -> void:
 			if !camera_a_alt:
 				camera_a_alt = true;
 			else:
-				current_location = [location.camera_b,location.camera_c].pick_random();
+				if time_mechanic.current_iteration < 5:
+					current_location = [location.camera_b,location.camera_c].pick_random();
+				elif time_mechanic.current_iteration >= 5:
+					current_location = [location.camera_b,location.camera_c,location.office].pick_random();
 				camera_a_alt = false;
 		location.camera_b:
-			current_location = [location.camera_a,location.camera_c].pick_random();
+			if time_mechanic.current_iteration < 5:
+				current_location = [location.camera_a,location.camera_c].pick_random();
+			elif time_mechanic.current_iteration >= 5:
+				current_location = [location.camera_a,location.camera_c,location.office].pick_random();
 		location.camera_c:
-			current_location = [location.camera_a,location.camera_b].pick_random();
+			if time_mechanic.current_iteration < 5:
+				current_location = [location.camera_a,location.camera_b].pick_random();
+			elif time_mechanic.current_iteration >= 5:
+				current_location = [location.camera_a,location.camera_b,location.office].pick_random();
 
 func _handle_graphics() -> void:
 	_reset_graphics_visibility();

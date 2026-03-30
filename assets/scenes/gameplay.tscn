@@ -35,7 +35,7 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.4, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.2, 0.2), Vector2(0.5, 0.5), Vector2(3, 3)]
@@ -59,7 +59,7 @@ tracks/2/path = NodePath(".:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(640, 360), Vector2(640, 180), Vector2(640, 360)]
@@ -71,7 +71,7 @@ tracks/3/path = NodePath(".:rotation")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.4, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, -0.6108652381980153, 0.4363323129985824]
@@ -84,8 +84,9 @@ _data = {
 
 [node name="Gameplay" type="Node" unique_id=1891329687]
 
-[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("knife", "timer_movement", "timer_kill_player", "graphics", "cameras_for_graphics", "static_fade_effect", "camera_change_sound", "monitor_mechanic")]
+[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("time_mechanic", "knife", "timer_movement", "timer_kill_player", "graphics", "cameras_for_graphics", "static_fade_effect", "camera_change_sound", "monitor_mechanic", "jumpscare_texture", "jumpscare_animation", "jumpscare_sound", "monitor_button")]
 script = ExtResource("14_br2i6")
+time_mechanic = NodePath("../TimeMechanic")
 knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
 ai_level = 20
 timer_movement = NodePath("Timer_Movement")
@@ -106,6 +107,10 @@ can_player_counter = false
 static_fade_effect = NodePath("../StaticFadeEffect")
 camera_change_sound = NodePath("../Camera_Change_Sound")
 monitor_mechanic = NodePath("../MonitorMechanic")
+jumpscare_texture = NodePath("../Goose_Jumpscare")
+jumpscare_animation = NodePath("../Goose_Jumpscare/AnimationPlayer")
+jumpscare_sound = NodePath("Jumpscare_Sound")
+monitor_button = NodePath("../HUD/MonitorButton")
 metadata/_custom_type_script = "uid://jvpnih3sf8he"
 
 [node name="Timer_Movement" type="Timer" parent="Goose" unique_id=710525424]
@@ -113,8 +118,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Timer_Kill_Player" type="Timer" parent="Goose" unique_id=803407839]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
+
+[node name="Jumpscare_Sound" type="AudioStreamPlayer" parent="Goose" unique_id=2140100615]
 
 [node name="MonitorMechanic" type="Node" parent="." unique_id=1541293040 node_paths=PackedStringArray("button", "monitor", "screen", "monitor_on_sound", "monitor_off_sound")]
 script = ExtResource("10_qk4f4")
@@ -170,7 +177,6 @@ iterations = Array[String](["12 AM", "1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 
 metadata/_custom_type_script = "uid://cqwa8lsfnhn74"
 
 [node name="Timer_Time" type="Timer" parent="TimeMechanic" unique_id=1828914341]
-wait_time = 15.0
 
 [node name="Office" type="Sprite2D" parent="." unique_id=1737180643]
 texture = ExtResource("1_n5x6c")
@@ -178,7 +184,6 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="Goose_Jumpscare" type="AnimatedSprite2D" parent="." unique_id=1968275461]
-visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(640, 360)
 scale = Vector2(0.2, 0.2)
