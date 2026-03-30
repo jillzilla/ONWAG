@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://smjrckvq77r0" path="res://assets/sounds/STEREO_CASSETTE__90097701.ogg" id="20_avujn"]
 [ext_resource type="AudioStream" uid="uid://b6wtdd0wkadnx" path="res://assets/sounds/blip3.ogg" id="21_avujn"]
 [ext_resource type="Script" uid="uid://w7yh76w70j6d" path="res://assets/classes/mechanics/StaticFadeEffect.gd" id="22_bkfnj"]
+[ext_resource type="Script" uid="uid://cqwa8lsfnhn74" path="res://assets/classes/mechanics/TimeMechanic.gd" id="23_5jwmk"]
 
 [node name="Gameplay" type="Node" unique_id=1891329687]
 
@@ -276,3 +277,13 @@ stream = ExtResource("21_avujn")
 script = ExtResource("22_bkfnj")
 static_ = NodePath("../HUD/CameraScreen/Static")
 metadata/_custom_type_script = "uid://w7yh76w70j6d"
+
+[node name="Timer_Time" type="Timer" parent="." unique_id=1828914341]
+wait_time = 15.0
+
+[node name="TimeMechanic" type="Node" parent="." unique_id=2068437687 node_paths=PackedStringArray("timer", "counter")]
+script = ExtResource("23_5jwmk")
+timer = NodePath("../Timer_Time")
+counter = NodePath("../HUD/Timer")
+iterations = Array[String](["12 AM", "1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 AM"])
+metadata/_custom_type_script = "uid://cqwa8lsfnhn74"
