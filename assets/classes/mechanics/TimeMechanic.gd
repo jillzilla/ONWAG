@@ -20,7 +20,7 @@ func _timer_timeout() -> void:
 	
 	counter.text = str(iterations[current_iteration]);
 	
-	if current_iteration < iterations.size() - 1:
+	if current_iteration < iterations.size() - 2: #2 just to make sure it doesnt reach 6 am
 		timer.start();
-	elif current_iteration >= iterations.size() - 1:
-		get_tree().change_scene_to_file("res://assets/scenes/title_screen.tscn");
+	#elif current_iteration >= iterations.size() - 1:
+		#get_tree().change_scene_to_file("res://assets/scenes/title_screen.tscn");

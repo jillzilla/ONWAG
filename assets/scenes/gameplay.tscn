@@ -26,6 +26,85 @@
 
 [node name="Gameplay" type="Node" unique_id=1891329687]
 
+[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("knife", "timer_movement", "timer_kill_player", "graphics", "cameras_for_graphics", "static_fade_effect", "camera_change_sound", "monitor_mechanic")]
+script = ExtResource("14_br2i6")
+knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
+ai_level = 20
+timer_movement = NodePath("Timer_Movement")
+timer_kill_player = NodePath("Timer_Kill_Player")
+graphics = {
+"camera_a": NodePath("../HUD/CameraScreen/CameraA/Goose1"),
+"camera_a_alt": NodePath("../HUD/CameraScreen/CameraA/Goose2"),
+"camera_b": NodePath("../HUD/CameraScreen/CameraB/Goose"),
+"camera_c": NodePath("../HUD/CameraScreen/CameraC/Goose")
+}
+cameras_for_graphics = {
+"camera_a": NodePath("../HUD/CameraScreen/CameraA"),
+"camera_a_alt": NodePath("../HUD/CameraScreen/CameraA"),
+"camera_b": NodePath("../HUD/CameraScreen/CameraB"),
+"camera_c": NodePath("../HUD/CameraScreen/CameraC")
+}
+can_player_counter = false
+static_fade_effect = NodePath("../StaticFadeEffect")
+camera_change_sound = NodePath("../Camera_Change_Sound")
+monitor_mechanic = NodePath("../MonitorMechanic")
+metadata/_custom_type_script = "uid://jvpnih3sf8he"
+
+[node name="Timer_Movement" type="Timer" parent="Goose" unique_id=710525424]
+wait_time = 5.0
+one_shot = true
+
+[node name="Timer_Kill_Player" type="Timer" parent="Goose" unique_id=803407839]
+wait_time = 10.0
+one_shot = true
+
+[node name="MonitorMechanic" type="Node" parent="." unique_id=1541293040 node_paths=PackedStringArray("button", "monitor", "screen", "monitor_on_sound", "monitor_off_sound")]
+script = ExtResource("10_qk4f4")
+button = NodePath("../HUD/MonitorButton")
+monitor = NodePath("../HUD/Monitor")
+screen = NodePath("../HUD/CameraScreen")
+monitor_on_sound = NodePath("../Monitor_ON")
+monitor_off_sound = NodePath("../Monitor_OFF")
+
+[node name="CameraButton" type="Node" parent="." unique_id=1253005084 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
+script = ExtResource("15_ixvey")
+button = NodePath("../HUD/CameraScreen/CamAButton")
+camera_to_show = NodePath("../HUD/CameraScreen/CameraA")
+cursor_to_show = NodePath("../HUD/CameraScreen/CursorA")
+camera_change_sound = NodePath("../Camera_Change_Sound")
+static_fade_effect = NodePath("../StaticFadeEffect")
+
+[node name="CameraButton2" type="Node" parent="." unique_id=1281704117 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
+script = ExtResource("15_ixvey")
+button = NodePath("../HUD/CameraScreen/CamBButton")
+camera_to_show = NodePath("../HUD/CameraScreen/CameraB")
+cursor_to_show = NodePath("../HUD/CameraScreen/CursorB")
+camera_change_sound = NodePath("../Camera_Change_Sound")
+static_fade_effect = NodePath("../StaticFadeEffect")
+
+[node name="CameraButton3" type="Node" parent="." unique_id=870609894 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
+script = ExtResource("15_ixvey")
+button = NodePath("../HUD/CameraScreen/CamCButton")
+camera_to_show = NodePath("../HUD/CameraScreen/CameraC")
+cursor_to_show = NodePath("../HUD/CameraScreen/CursorC")
+camera_change_sound = NodePath("../Camera_Change_Sound")
+static_fade_effect = NodePath("../StaticFadeEffect")
+
+[node name="StaticFadeEffect" type="Node" parent="." unique_id=399881890 node_paths=PackedStringArray("static_")]
+script = ExtResource("22_bkfnj")
+static_ = NodePath("../HUD/CameraScreen/Static")
+metadata/_custom_type_script = "uid://w7yh76w70j6d"
+
+[node name="TimeMechanic" type="Node" parent="." unique_id=2068437687 node_paths=PackedStringArray("timer", "counter")]
+script = ExtResource("23_5jwmk")
+timer = NodePath("Timer_Time")
+counter = NodePath("../HUD/Timer")
+iterations = Array[String](["12 AM", "1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 AM"])
+metadata/_custom_type_script = "uid://cqwa8lsfnhn74"
+
+[node name="Timer_Time" type="Timer" parent="TimeMechanic" unique_id=1828914341]
+wait_time = 15.0
+
 [node name="Office" type="Sprite2D" parent="." unique_id=1737180643]
 texture = ExtResource("1_n5x6c")
 centered = false
@@ -202,70 +281,6 @@ theme_override_font_sizes/font_size = 64
 text = "12 AM"
 metadata/_edit_lock_ = true
 
-[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("knife", "timer_movement", "timer_kill_player", "graphics", "cameras_for_graphics", "static_fade_effect", "camera_change_sound", "monitor_mechanic")]
-script = ExtResource("14_br2i6")
-knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
-ai_level = 20
-timer_movement = NodePath("Timer_Movement")
-timer_kill_player = NodePath("Timer_Kill_Player")
-graphics = {
-"camera_a": NodePath("../HUD/CameraScreen/CameraA/Goose1"),
-"camera_a_alt": NodePath("../HUD/CameraScreen/CameraA/Goose2"),
-"camera_b": NodePath("../HUD/CameraScreen/CameraB/Goose"),
-"camera_c": NodePath("../HUD/CameraScreen/CameraC/Goose")
-}
-cameras_for_graphics = {
-"camera_a": NodePath("../HUD/CameraScreen/CameraA"),
-"camera_a_alt": NodePath("../HUD/CameraScreen/CameraA"),
-"camera_b": NodePath("../HUD/CameraScreen/CameraB"),
-"camera_c": NodePath("../HUD/CameraScreen/CameraC")
-}
-can_player_counter = false
-static_fade_effect = NodePath("../StaticFadeEffect")
-camera_change_sound = NodePath("../Camera_Change_Sound")
-monitor_mechanic = NodePath("../MonitorMechanic")
-metadata/_custom_type_script = "uid://jvpnih3sf8he"
-
-[node name="Timer_Movement" type="Timer" parent="Goose" unique_id=710525424]
-wait_time = 5.0
-one_shot = true
-
-[node name="Timer_Kill_Player" type="Timer" parent="Goose" unique_id=803407839]
-wait_time = 10.0
-one_shot = true
-
-[node name="MonitorMechanic" type="Node" parent="." unique_id=1541293040 node_paths=PackedStringArray("button", "monitor", "screen", "monitor_on_sound", "monitor_off_sound")]
-script = ExtResource("10_qk4f4")
-button = NodePath("../HUD/MonitorButton")
-monitor = NodePath("../HUD/Monitor")
-screen = NodePath("../HUD/CameraScreen")
-monitor_on_sound = NodePath("../Monitor_ON")
-monitor_off_sound = NodePath("../Monitor_OFF")
-
-[node name="CameraButton" type="Node" parent="." unique_id=1253005084 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
-script = ExtResource("15_ixvey")
-button = NodePath("../HUD/CameraScreen/CamAButton")
-camera_to_show = NodePath("../HUD/CameraScreen/CameraA")
-cursor_to_show = NodePath("../HUD/CameraScreen/CursorA")
-camera_change_sound = NodePath("../Camera_Change_Sound")
-static_fade_effect = NodePath("../StaticFadeEffect")
-
-[node name="CameraButton2" type="Node" parent="." unique_id=1281704117 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
-script = ExtResource("15_ixvey")
-button = NodePath("../HUD/CameraScreen/CamBButton")
-camera_to_show = NodePath("../HUD/CameraScreen/CameraB")
-cursor_to_show = NodePath("../HUD/CameraScreen/CursorB")
-camera_change_sound = NodePath("../Camera_Change_Sound")
-static_fade_effect = NodePath("../StaticFadeEffect")
-
-[node name="CameraButton3" type="Node" parent="." unique_id=870609894 node_paths=PackedStringArray("button", "camera_to_show", "cursor_to_show", "camera_change_sound", "static_fade_effect")]
-script = ExtResource("15_ixvey")
-button = NodePath("../HUD/CameraScreen/CamCButton")
-camera_to_show = NodePath("../HUD/CameraScreen/CameraC")
-cursor_to_show = NodePath("../HUD/CameraScreen/CursorC")
-camera_change_sound = NodePath("../Camera_Change_Sound")
-static_fade_effect = NodePath("../StaticFadeEffect")
-
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=438281429]
 stream = ExtResource("1_1pg7n")
 autoplay = true
@@ -278,18 +293,3 @@ stream = ExtResource("20_avujn")
 
 [node name="Camera_Change_Sound" type="AudioStreamPlayer" parent="." unique_id=1515544684]
 stream = ExtResource("21_avujn")
-
-[node name="StaticFadeEffect" type="Node" parent="." unique_id=399881890 node_paths=PackedStringArray("static_")]
-script = ExtResource("22_bkfnj")
-static_ = NodePath("../HUD/CameraScreen/Static")
-metadata/_custom_type_script = "uid://w7yh76w70j6d"
-
-[node name="Timer_Time" type="Timer" parent="." unique_id=1828914341]
-wait_time = 15.0
-
-[node name="TimeMechanic" type="Node" parent="." unique_id=2068437687 node_paths=PackedStringArray("timer", "counter")]
-script = ExtResource("23_5jwmk")
-timer = NodePath("../Timer_Time")
-counter = NodePath("../HUD/Timer")
-iterations = Array[String](["12 AM", "1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 AM"])
-metadata/_custom_type_script = "uid://cqwa8lsfnhn74"
