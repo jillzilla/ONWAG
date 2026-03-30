@@ -2,6 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://cjnowijf7msbk" path="res://assets/music/Préludes Book 1, L. 117 - Minstrels (Rake in The Lake).mp3" id="1_1pg7n"]
 [ext_resource type="Texture2D" uid="uid://cyadvusdxme4q" path="res://assets/images/office.png" id="1_n5x6c"]
+[ext_resource type="AudioStream" uid="uid://diav0jv4ej1pl" path="res://assets/sounds/jumpscare.ogg" id="2_kgr1o"]
 [ext_resource type="Texture2D" uid="uid://cbptkpln5alg5" path="res://assets/images/monitor_button.png" id="2_un4qs"]
 [ext_resource type="SpriteFrames" uid="uid://c7g7omeptbde0" path="res://assets/sprite_frames/monitor_sprite_frames.tres" id="3_17b01"]
 [ext_resource type="Texture2D" uid="uid://dptwybxhqt6ji" path="res://assets/images/cam1.png" id="3_fw4li"]
@@ -84,7 +85,7 @@ _data = {
 
 [node name="Gameplay" type="Node" unique_id=1891329687]
 
-[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("time_mechanic", "knife", "timer_movement", "timer_kill_player", "graphics", "cameras_for_graphics", "static_fade_effect", "camera_change_sound", "monitor_mechanic", "jumpscare_texture", "jumpscare_animation", "jumpscare_sound", "monitor_button")]
+[node name="Goose" type="Node" parent="." unique_id=1584512338 node_paths=PackedStringArray("time_mechanic", "knife", "timer_movement", "timer_kill_player", "graphics", "cameras_for_graphics", "static_fade_effect", "camera_change_sound", "monitor_mechanic", "jumpscare_texture", "jumpscare_animation", "jumpscare_sound", "monitor_button", "music")]
 script = ExtResource("14_br2i6")
 time_mechanic = NodePath("../TimeMechanic")
 knife = NodePath("../HUD/CameraScreen/CameraC/Knife")
@@ -111,6 +112,7 @@ jumpscare_texture = NodePath("../Goose_Jumpscare")
 jumpscare_animation = NodePath("../Goose_Jumpscare/AnimationPlayer")
 jumpscare_sound = NodePath("Jumpscare_Sound")
 monitor_button = NodePath("../HUD/MonitorButton")
+music = NodePath("../Music")
 metadata/_custom_type_script = "uid://jvpnih3sf8he"
 
 [node name="Timer_Movement" type="Timer" parent="Goose" unique_id=710525424]
@@ -118,10 +120,11 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Timer_Kill_Player" type="Timer" parent="Goose" unique_id=803407839]
-wait_time = 5.0
+wait_time = 6.5
 one_shot = true
 
 [node name="Jumpscare_Sound" type="AudioStreamPlayer" parent="Goose" unique_id=2140100615]
+stream = ExtResource("2_kgr1o")
 
 [node name="MonitorMechanic" type="Node" parent="." unique_id=1541293040 node_paths=PackedStringArray("button", "monitor", "screen", "monitor_on_sound", "monitor_off_sound")]
 script = ExtResource("10_qk4f4")
@@ -177,6 +180,7 @@ iterations = Array[String](["12 AM", "1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 
 metadata/_custom_type_script = "uid://cqwa8lsfnhn74"
 
 [node name="Timer_Time" type="Timer" parent="TimeMechanic" unique_id=1828914341]
+wait_time = 15.0
 
 [node name="Office" type="Sprite2D" parent="." unique_id=1737180643]
 texture = ExtResource("1_n5x6c")

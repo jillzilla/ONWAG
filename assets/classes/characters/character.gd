@@ -28,6 +28,7 @@ enum location {camera_a,camera_b,camera_c,office};
 @export var jumpscare_sound : AudioStreamPlayer;
 
 @export var monitor_button : TextureButton;
+@export var music : AudioStreamPlayer;
 
 #functions
 func _ready() -> void:
@@ -59,6 +60,7 @@ func _timer_movement_timeout() -> void:
 			_annoy_player();
 		
 func _timer_kill_player_timeout() -> void:
+	music.stop();
 	if monitor_mechanic.isOpen:
 		monitor_mechanic._pull_down_monitor();
 	monitor_button.queue_free();
