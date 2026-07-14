@@ -1,6 +1,6 @@
 ## ONE NIGHT WITH A GOOSE
 
-Joke FNaF Fan-Game developed by RyanTSM, and Jill Zilla for 2026's April Fools' Day!
+This is a simple, short Five Nights at Freddy's fangame created for April Fools' Day.
 
 ## BUILDING
 
